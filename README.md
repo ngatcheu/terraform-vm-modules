@@ -54,6 +54,8 @@ module "ma_vm" {
 | `gateway` | Passerelle par défaut | `string` | — | oui |
 | `nameserver` | Serveur DNS | `string` | — | oui |
 | `ssh_public_key` | Clé SSH publique (sensible) | `string` | — | oui |
+| `vga_type` | Type de carte graphique (`serial0` = console série des images cloud) | `string` | `"serial0"` | non |
+| `vga_memory` | Mémoire vidéo en MB (4 à 512) | `number` | `16` | non |
 
 ## Outputs
 

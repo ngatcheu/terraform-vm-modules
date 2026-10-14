@@ -26,6 +26,13 @@ resource "proxmox_virtual_environment_vm" "this" {
     size         = var.disk_size
   }
 
+  # Déclaré explicitement : sinon le provider veut retirer à chaque plan le VGA
+  # hérité du template (serial0 pour les images cloud), ce qui crée une dérive permanente.
+  vga {
+    type   = var.vga_type
+    memory = var.vga_memory
+  }
+
   network_device {
     bridge = var.network_bridge
     model  = "virtio"

@@ -69,3 +69,22 @@ variable "ssh_public_key" {
   type      = string
   sensitive = true
 }
+
+# ===== Affichage =====
+
+variable "vga_type" {
+  description = "Type de carte graphique (serial0 = console série, adapté aux images cloud)"
+  type        = string
+  default     = "serial0"
+}
+
+variable "vga_memory" {
+  description = "Mémoire vidéo en MB (4 à 512 ; sans effet réel en console série)"
+  type        = number
+  default     = 16
+
+  validation {
+    condition     = var.vga_memory >= 4 && var.vga_memory <= 512
+    error_message = "vga_memory doit être compris entre 4 et 512 MB (contrainte Proxmox)."
+  }
+}
